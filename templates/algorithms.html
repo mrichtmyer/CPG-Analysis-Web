@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="jumbotron">
+    <h1>These are the algorithms under the hood</h1>
+
+    <ul>
+        <li><strong>Scrapy:</strong> web-scrape data from Amazon</li>
+        <li><strong>PostgreSQL:</strong> each product was stored as it's own table. This was chosen to be able to either select
+            individual SKUs or join tables by product form (e.g. cream, lotion, gel)
+        </li>
+        <li><strong>Data Wrangling:</strong> all ETL was done using Pandas.
+            Lambda functions were made to help automate cleaning elegantly. 
+            For example: <br> 
+            <code>def extractDate(row): <br>
+                """Lambda function to convert string into datetime object""" <br>
+                date = pd.to_datetime(row[33:]) <br>
+                return date</code>
+        </li>
+        <li> <strong>Sentiment Analysis:</strong> parametrize consumer emotions in two ways: 
+            <ol>
+                VADER: Valence Aware Dictionary for sEntiment Reasoning, model trained by C.J. Hutto and Eric Gilbert
+                from Georgia Institute of Technology. <br>
+                <a href="http://comp.social.gatech.edu/papers/icwsm14.vader.hutto.pdf">Paper</a>
+            </ol>
+            <ol>
+                NRC Lexicons: essentially a large dictionary of >10k words and emotion values <br>
+
+                <a href="http://sentiment.nrc.ca/lexicons-for-research/">Download NRC Lexicon Emotions Vectors</a>
+            </ol>
+            
+        </li>
+    </ul>
+
+</div>
+
+
+{% endblock %}
